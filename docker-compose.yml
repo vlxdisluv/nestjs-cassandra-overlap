@@ -1,0 +1,23 @@
+version: '3.6'
+
+volumes:
+  scylla_data: null
+
+services:
+  scylla-node:
+    image: scylladb/scylla:4.6.dev-0.20210801.3089558f8
+    restart: always
+    command: --seeds=scylla-node1,scylla-node2 --smp 1 --memory 200M
+      --overprovisioned 1 --api-address 0.0.0.0
+    volumes:
+      - scylla_data:/var/lib/scylla/data
+      - './scylla/scylla.yaml:/etc/scylla/scylla.yaml'
+      - './scylla/cassandra-rackdc.properties.dc1:/etc/scylla/cassandra-rackdc.properties'
+    networks:
+      web: null
+    ports:
+      - 9042:9042
+
+networks:
+  web:
+    driver: bridge

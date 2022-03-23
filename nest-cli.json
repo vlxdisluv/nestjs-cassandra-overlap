@@ -1,0 +1,18 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "projects": {
+    "nestjs-cassandra-overlap": {
+      "type": "library",
+      "root": "libs/nestjs-cassandra-overlap",
+      "entryFile": "index",
+      "sourceRoot": "libs/nestjs-cassandra-overlap/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/nestjs-cassandra-overlap/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": true
+  }
+}
